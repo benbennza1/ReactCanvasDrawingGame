@@ -1,3 +1,6 @@
+//import React, { Component } from "react";
+import FakeServer from "./FakeServer";
+
 var canvas,
   ctx,
   flag = false,
@@ -83,6 +86,12 @@ const canvasUtil = {
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();
+    FakeServer.post(null, {
+      prevX: prevX,
+      prevY: prevY,
+      currX: currX,
+      currY: currY
+    });
   },
 
   erase: function() {
