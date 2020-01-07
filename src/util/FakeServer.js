@@ -2,7 +2,7 @@
 const FakeServer = {
   // this will act as the client requests for now, and returns server "broadcast" expected value
   post: function(src, data) {
-    console.log("post! " + JSON.stringify(data));
+    console.log(JSON.stringify(data));
     // server reveives data
     // server sends back
   },

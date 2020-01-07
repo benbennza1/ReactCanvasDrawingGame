@@ -3,7 +3,6 @@ import { ChromePicker } from "react-color";
 import Tool from "./Tool";
 import io from "socket.io-client";
 import "./Canvas.css";
-//import "./util/canvasUtil.js";
 import canvasUtil from "./util/canvasUtil";
 import axios from "axios";
 import { findByText } from "@testing-library/react";
@@ -32,27 +31,38 @@ class Canvas extends Component {
 
   // Initialization goes here
   componentDidMount() {
-    debugger;
     const cvs = this.canvas.current;
     canvasUtil.init();
   }
 
   componentDidUpdate() {
-    debugger;
     alert("wololo");
+  }
+
+  redraw() {
+    var ta = document.getElementById("ta");
+    var strFakeResponse = ta.value;
+    var drawArr = JSON.parse(strFakeResponse);
+    drawArr.forEach(function(i){
+        canvasUtil.redraw(i);
+    });
+  }
+
+  clear(){
+    canvasUtil.clear();
   }
 
   // Rendering of the component
   render() {
     return (
       <div>
-        <canvas id="canReact" width="800" height="600" ref={this.canvas}>
+        <canvas id="can" width="800" height="600" ref={this.canvas}>
           Your browser does not support canvas
         </canvas>
-        <canvas id="can" width="800" height="600">
-          Your browser does not support canvas
-        </canvas>
-        <button onClick="">test</button>
+
+        <textarea id="ta" width="700" height="100"></textarea>
+        <button onClick={this.clear}>clear</button>
+        <button onClick={this.redraw}>draw</button>
       </div>
     );
   }

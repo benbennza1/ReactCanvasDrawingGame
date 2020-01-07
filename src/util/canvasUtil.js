@@ -1,7 +1,7 @@
-//import React, { Component } from "react";
 import FakeServer from "./FakeServer";
 
 var canvas,
+strokeArray,
   ctx,
   flag = false,
   prevX = 0,
@@ -13,6 +13,8 @@ var canvas,
 var x = "black",
   y = 2;
 
+
+// TODO: There is a bug where u go outside of the box and 
 const canvasUtil = {
   init: function() {
     canvas = document.getElementById("can");
@@ -48,6 +50,11 @@ const canvasUtil = {
       },
       false
     );
+  },
+
+  clear: function () {
+    strokeArray = false;
+    ctx.clearRect(0,0,canvas.width, canvas.height);
   },
 
   color: function(obj) {
@@ -86,20 +93,26 @@ const canvasUtil = {
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();
-    FakeServer.post(null, {
+    
+    // Store stroke json as user draws
+    var coord = {
       prevX: prevX,
       prevY: prevY,
       currX: currX,
       currY: currY
-    });
+    }
+    //FakeServer.post(coord);
+    strokeArray? strokeArray.push(coord):strokeArray=[coord];
   },
 
-  erase: function() {
-    // var m = confirm("Want to clear");
-    //if (m) {
-    //ctx.clearRect(0, 0, w, h);
-    // document.getElementById("canvasimg").style.display = "none";
-    //}
+  redraw: function(coords) {
+    ctx.beginPath();
+    ctx.moveTo(coords.prevX, coords.prevY);
+    ctx.lineTo(coords.currX, coords.currY);
+    ctx.strokeStyle = x;
+    ctx.lineWidth = y;
+    ctx.stroke();
+    ctx.closePath();
   },
 
   save: function() {
@@ -120,14 +133,18 @@ const canvasUtil = {
       dot_flag = true;
       if (dot_flag) {
         ctx.beginPath();
-        ctx.fillStyle = x;
+        ctx.fillStyle = x; 
         ctx.fillRect(currX, currY, 2, 2);
         ctx.closePath();
         dot_flag = false;
       }
     }
-    if (res == "up" || res == "out") {
+    //
+    if (res == "up"  || res == "out") {
+      if(flag)FakeServer.post(null, strokeArray);
       flag = false;
+      // When user lift up the pen, post to server
+      
     }
     if (res == "move") {
       if (flag) {
