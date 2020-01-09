@@ -7,11 +7,11 @@ const FakeServer = {
     // server sends back
   },
   fetch: function(src, data) {
-    console.log("fetch! " + JSON.stringify(data));
+    console.log('fetch! ' + JSON.stringify(data));
   },
   get: function(src, data) {
-    console.log("get! " + JSON.stringify(data));
-  }
+    console.log('get! ' + JSON.stringify(data));
+  },
 };
 
 export default FakeServer;

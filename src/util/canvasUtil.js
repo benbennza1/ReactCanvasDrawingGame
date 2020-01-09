@@ -1,87 +1,87 @@
-import FakeServer from "./FakeServer";
+import FakeServer from './FakeServer';
 
-var canvas,
-strokeArray,
-  ctx,
-  flag = false,
-  prevX = 0,
-  currX = 0,
-  prevY = 0,
-  currY = 0,
-  dot_flag = false;
+let canvas;
+let strokeArray;
+let ctx;
+let flag = false;
+let prevX = 0;
+let currX = 0;
+let prevY = 0;
+let currY = 0;
+let dot_flag = false;
 
-var x = "black",
-  y = 2;
+let x = 'black';
+let y = 2;
 
 
-// TODO: There is a bug where u go outside of the box and 
+// TODO: There is a bug where u go outside of the box and
 const canvasUtil = {
   init: function() {
-    canvas = document.getElementById("can");
-    ctx = canvas.getContext("2d");
-    //w = canvas.width;
-    //h = canvas.height;
+    canvas = document.getElementById('can');
+    ctx = canvas.getContext('2d');
+    // w = canvas.width;
+    // h = canvas.height;
 
     canvas.addEventListener(
-      "mousemove",
-      function(e) {
-        canvasUtil.findxy("move", e);
-      },
-      false
+        'mousemove',
+        function(e) {
+          canvasUtil.findxy('move', e);
+        },
+        false,
     );
     canvas.addEventListener(
-      "mousedown",
-      function(e) {
-        canvasUtil.findxy("down", e);
-      },
-      false
+        'mousedown',
+        function(e) {
+          canvasUtil.findxy('down', e);
+        },
+        false,
     );
     canvas.addEventListener(
-      "mouseup",
-      function(e) {
-        canvasUtil.findxy("up", e);
-      },
-      false
+        'mouseup',
+        function(e) {
+          canvasUtil.findxy('up', e);
+        },
+        false,
     );
     canvas.addEventListener(
-      "mouseout",
-      function(e) {
-        canvasUtil.findxy("out", e);
-      },
-      false
+        'mouseout',
+        function(e) {
+          canvasUtil.findxy('out', e);
+        },
+        false,
     );
   },
 
-  clear: function () {
+  clear: function() {
     strokeArray = false;
-    ctx.clearRect(0,0,canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   },
 
   color: function(obj) {
     switch (obj.id) {
-      case "green":
-        x = "green";
+      case 'green':
+        x = 'green';
         break;
-      case "blue":
-        x = "blue";
+      case 'blue':
+        x = 'blue';
         break;
-      case "red":
-        x = "red";
+      case 'red':
+        x = 'red';
         break;
-      case "yellow":
-        x = "yellow";
+      case 'yellow':
+        x = 'yellow';
         break;
-      case "orange":
-        x = "orange";
+      case 'orange':
+        x = 'orange';
         break;
-      case "black":
-        x = "black";
+      case 'black':
+        x = 'black';
         break;
-      case "white":
-        x = "white";
+      case 'white':
+        x = 'white';
         break;
     }
-    if (x == "white") y = 14;
+    if (x == 'white') y = 14;
     else y = 2;
   },
 
@@ -93,15 +93,15 @@ const canvasUtil = {
     ctx.lineWidth = y;
     ctx.stroke();
     ctx.closePath();
-    
+
     // Store stroke json as user draws
-    var coord = {
+    const coord = {
       prevX: prevX,
       prevY: prevY,
       currX: currX,
-      currY: currY
-    }
-    //FakeServer.post(coord);
+      currY: currY,
+    };
+    // FakeServer.post(coord);
     strokeArray? strokeArray.push(coord):strokeArray=[coord];
   },
 
@@ -116,14 +116,14 @@ const canvasUtil = {
   },
 
   save: function() {
-    document.getElementById("canvasimg").style.border = "2px solid";
-    var dataURL = canvas.toDataURL();
-    document.getElementById("canvasimg").src = dataURL;
-    document.getElementById("canvasimg").style.display = "inline";
+    document.getElementById('canvasimg').style.border = '2px solid';
+    const dataURL = canvas.toDataURL();
+    document.getElementById('canvasimg').src = dataURL;
+    document.getElementById('canvasimg').style.display = 'inline';
   },
 
   findxy: function(res, e) {
-    if (res == "down") {
+    if (res == 'down') {
       prevX = currX;
       prevY = currY;
       currX = e.clientX - canvas.offsetLeft;
@@ -133,20 +133,19 @@ const canvasUtil = {
       dot_flag = true;
       if (dot_flag) {
         ctx.beginPath();
-        ctx.fillStyle = x; 
+        ctx.fillStyle = x;
         ctx.fillRect(currX, currY, 2, 2);
         ctx.closePath();
         dot_flag = false;
       }
     }
     //
-    if (res == "up"  || res == "out") {
-      if(flag)FakeServer.post(null, strokeArray);
+    if (res == 'up' || res == 'out') {
+      if (flag)FakeServer.post(null, strokeArray);
       flag = false;
       // When user lift up the pen, post to server
-      
     }
-    if (res == "move") {
+    if (res == 'move') {
       if (flag) {
         prevX = currX;
         prevY = currY;
@@ -155,6 +154,6 @@ const canvasUtil = {
         canvasUtil.draw();
       }
     }
-  }
+  },
 };
 export default canvasUtil;
