@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./Canvas.css"
 import canvasUtil from "./util/canvasUtil"
+import { socket } from "./api"
 
 /**
  * Canvas component
