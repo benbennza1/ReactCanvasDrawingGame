@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+}
+
+.name-input {
+	display: flex;
+	width: 30%;
+}
+
+.join-global {
+	display: flex;
+	width: 5%;
+}
+
+.join-private {
+	display: flex;
+	width: 10%;
+	margin: 10px 10px 10px 0px;
+}

@@ -87,48 +87,6 @@ const canvasUtil = {
 		else y = 2
 	},
 
-	// draw: function() {
-	// 	// ctx.beginPath()
-	// 	// ctx.moveTo(prevX, prevY)
-	// 	// ctx.lineTo(currX, currY)
-	// 	// ctx.strokeStyle = x
-	// 	// ctx.lineWidth = y
-	// 	// ctx.stroke()
-	// 	// ctx.closePath()
-
-	// 	// Store stroke json as user draws
-	// 	const coord = {
-	// 		prevX: prevX,
-	// 		prevY: prevY,
-	// 		currX: currX,
-	// 		currY: currY,
-	// 	}
-	// 	// FakeServer.post(coord);
-	// 	socket.emit("coord", coord)
-	// 	socket.on("getCoord", data => {
-	// 		console.log("getCoord", data)
-	// 		strokeArray ? strokeArray.push(data) : (strokeArray = [data])
-	// 		ctx.beginPath()
-	// 		ctx.moveTo(data.prevX, data.prevY)
-	// 		ctx.lineTo(data.currX, data.currY)
-	// 		ctx.strokeStyle = x
-	// 		ctx.lineWidth = y
-	// 		ctx.stroke()
-	// 		ctx.closePath()
-	// 	})
-	// 	strokeArray ? strokeArray.push(coord) : (strokeArray = [coord])
-	// },
-
-	// redraw: function(coords) {
-	// 	ctx.beginPath()
-	// 	ctx.moveTo(coords.prevX, coords.prevY)
-	// 	ctx.lineTo(coords.currX, coords.currY)
-	// 	ctx.strokeStyle = x
-	// 	ctx.lineWidth = y
-	// 	ctx.stroke()
-	// 	ctx.closePath()
-	// },
-
 	draw: function(coords) {
 		ctx.beginPath()
 		ctx.moveTo(coords.prevX, coords.prevY)
@@ -172,14 +130,6 @@ const canvasUtil = {
 					dot_flag = false
 				}
 			})
-
-			// if (dot_flag) {
-			// 	ctx.beginPath()
-			// 	ctx.fillStyle = x
-			// 	ctx.fillRect(currX, currY, 2, 2)
-			// 	ctx.closePath()
-			// 	dot_flag = false
-			// }
 		}
 		//
 		if (res === "up" || res === "out") {

@@ -1,0 +1,37 @@
+.box {
+	border: 1px red solid;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: 43%;
+	height: 95%;
+	margin: 5px;
+}
+
+.users {
+	border: 1px green solid;
+	position: absolute;
+	margin-right: 2px;
+	top: 0px;
+	left: 0px;
+	width: 30%;
+	height: 100%;
+}
+
+.chat-history {
+	border: 1px blue solid;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 70%;
+	height: 95%;
+}
+
+.chat-input {
+	border: 1px purple solid;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 70%;
+	height: 5%;
+}
