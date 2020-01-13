@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { withRouter } from "react-router-dom"
 import { socket } from "../api"
 import "./home.css"
+import { Button } from 'reactstrap';
 
 const Home = ({ history }) => {
 	const [val, setVal] = useState("")
@@ -19,12 +20,12 @@ const Home = ({ history }) => {
 	return (
 		<div className="container">
 			<input className="name-input" type="text" value={val} onChange={e => onChange(e)} />
-			<button className="join-global" type="submit" onClick={e => globalClick(e)}>
-				Join!
-			</button>
-			<button className="join-private" type="submit">
+			<Button color="primary" className="join-global" type="submit" onClick={e => globalClick(e)}>
+				Join
+			</Button>
+			<Button color="primary" className="join-private" type="submit">
 				Create Private Room
-			</button>
+			</Button>
 		</div>
 	)
 }

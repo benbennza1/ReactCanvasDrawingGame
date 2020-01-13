@@ -50,7 +50,10 @@ const Chat = () => {
 
 	return (
 		<div className="box">
-			<div>Room: {initialize.room}</div>
+			<div>
+				<h5>Room: {initialize.room}
+				</h5>
+			</div>
 			<div className="users">
 				<UserList initialize={initialize} users={users} />
 			</div>

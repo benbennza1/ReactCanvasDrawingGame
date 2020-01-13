@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "./Canvas.css"
 import canvasUtil from "../util/canvasUtil"
 import { socket } from "../api"
+import { Button } from 'reactstrap';
 
 /**
  * Canvas component
@@ -58,7 +59,7 @@ class Canvas extends Component {
 				</canvas>
 
 				{/* <textarea id="ta" width="700" height="100"></textarea> */}
-				<button onClick={this.clear}>clear</button>
+				<Button color="primary" onClick={this.clear}>clear</Button>
 				{/* <button onClick={this.redraw}>draw</button> */}
 			</div>
 		)
