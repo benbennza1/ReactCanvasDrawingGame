@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { socket } from "../api"
 import "./chat.css"
-import UserList from "./user-list"
 import ChatInput from "./chat-input"
 import ChatHistory from "./chat-history"
 
@@ -15,7 +14,6 @@ const Chat = () => {
 	// chat
 	const [val, setVal] = useState("")
 	const [msg, setMsg] = useState([])
-	const [users, setUsers] = useState([])
 
 	const onChange = e => {
 		setVal(e.target.value)
@@ -30,9 +28,6 @@ const Chat = () => {
 
 	socket.on("global-joinMsg", data => alert(data))
 	socket.on("receiveMsg", data => setMsg(data))
-	socket.on("users list", data => {
-		setUsers(data)
-	})
 
 	useEffect(() => {
 		socket.on("getMsg", data => setMsg(data))
@@ -42,18 +37,10 @@ const Chat = () => {
 				...data,
 			})
 		})
-
-		socket.on("users list", data => {
-			setUsers(data)
-		})
 	}, [])
 
 	return (
 		<div className="box">
-			<div>Room: {initialize.room}</div>
-			<div className="users">
-				<UserList initialize={initialize} users={users} />
-			</div>
 			<div className="chat-history">
 				<ChatHistory msg={msg} />
 			</div>

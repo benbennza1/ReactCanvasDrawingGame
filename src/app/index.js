@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "../home"
 import Canvas from "../canvas"
 import Chat from "../chat"
+import Room from "../room"
 
 const App = () => {
 	return (
@@ -12,6 +13,7 @@ const App = () => {
 					<Home />
 				</Route>
 				<Route exact path="/play">
+					<Room />
 					<Canvas />
 					<Chat />
 				</Route>
