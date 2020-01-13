@@ -1,22 +1,23 @@
-import React from "react"
+import React from 'react';
+import { ListGroupItem, ListGroup } from 'reactstrap';
 
 const ulStyle = {
-	listStyleType: "none",
-}
+    listStyleType: 'none',
+};
 
 const msgStyle = {
-	margin: "5px",
-	backgroundColor: "lightgrey",
-}
+    margin: '5px',
+    backgroundColor: 'lightgrey',
+};
 
 const chatHistory = ({ msg, ...props }) => {
-	return (
-		<ul style={{ ...ulStyle }}>
-			{msg.map(msg => (
-				<li style={{ ...msgStyle }}>{msg}</li>
-			))}
-		</ul>
-	)
-}
+    return (
+        <ListGroup>
+            {msg.map(msg => (
+                <ListGroupItem>{msg}</ListGroupItem>
+            ))}
+        </ListGroup>
+    );
+};
 
-export default chatHistory
+export default chatHistory;
