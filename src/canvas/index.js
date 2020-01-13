@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./Canvas.css"
-import canvasUtil from "./util/canvasUtil"
-import { socket } from "./api"
+import canvasUtil from "../util/canvasUtil"
+import { socket } from "../api"
 
 /**
  * Canvas component
@@ -57,9 +57,9 @@ class Canvas extends Component {
 					Your browser does not support canvas
 				</canvas>
 
-				<textarea id="ta" width="700" height="100"></textarea>
+				{/* <textarea id="ta" width="700" height="100"></textarea> */}
 				<button onClick={this.clear}>clear</button>
-				<button onClick={this.redraw}>draw</button>
+				{/* <button onClick={this.redraw}>draw</button> */}
 			</div>
 		)
 	}

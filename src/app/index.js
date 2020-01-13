@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Home from "../home"
-import Canvas from "../Canvas"
+import Canvas from "../canvas"
 import Chat from "../chat"
 
 const App = () => {
