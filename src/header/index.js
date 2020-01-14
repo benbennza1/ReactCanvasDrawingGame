@@ -7,11 +7,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText,
 } from 'reactstrap';
 import logo from '../resource/logo.svg';
 import './header.css';
@@ -25,7 +20,7 @@ const Header = props => {
         <div>
             <Navbar color='light' light expand='md'>
                 <NavbarBrand href='/'>
-                    <img class='header-logo' src={logo} />
+                    <img alt='logo' class='header-logo' src={logo} />
                     &lt;3
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
