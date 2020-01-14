@@ -26,12 +26,17 @@ const Chat = () => {
     setVal(e.target.value);
   };
 
-  const onKeyUp = e => {
-    debugger;
+  const onKeyDown = e => {
     if (e.keyCode === 13) {
       socket.emit("newMsg", val);
       setVal("");
     }
+  };
+  const onKeyUp = e => {
+    // if (e.keyCode === 13) {
+    //   socket.emit("newMsg", val);
+    //   setVal("");
+    // }
   };
 
   socket.on("global-joinMsg", data => alert(data));
@@ -61,15 +66,9 @@ const Chat = () => {
         <div ref={messagesEndRef} />
       </Table>
 
-      {/* <Container >
-        <Row xs="1">
-          <Col> */}
       <div className="chat-input" style={{ position: "absolute", bottom: "0px" }}>
-        <ChatInput value={val} onChange={onChange} onKeyUp={onKeyUp} />
+        <ChatInput value={val} onKeyUp={onKeyUp} onKeyDown={onKeyDown} onChange={onChange} />
       </div>
-      {/* </Col>
-        </Row>
-      </Container> */}
     </div>
   );
 };
