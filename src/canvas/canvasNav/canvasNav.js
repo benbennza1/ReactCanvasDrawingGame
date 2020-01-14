@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Button, Container, Row, Col } from 'reactstrap';
-import { socket } from '../../api';
+import React, { Component } from "react";
+import { Button, Container, Row, Col } from "reactstrap";
+import { socket } from "../../api";
 
 class CanvasNav extends Component {
     constructor(props) {
@@ -9,12 +9,14 @@ class CanvasNav extends Component {
     }
 
     clear() {
-        socket.emit('clearCanvas');
+        alert("Not yet implemented on the server.");
+        socket.emit("clearCanvas");
     }
 
     save() {
         //TODO
-        socket.emit('saveCanvas');
+        alert("Not yet implemented on the server.");
+        socket.emit("saveCanvas");
     }
 
     render() {
@@ -22,12 +24,12 @@ class CanvasNav extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <Button color='primary' onClick={this.clear}>
+                        <Button color="primary" onClick={this.clear}>
                             Clear
                         </Button>
                     </Col>
                     <Col>
-                        <Button color='info' onClick={this.save}>
+                        <Button color="info" onClick={this.save}>
                             Save
                         </Button>
                     </Col>
