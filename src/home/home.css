@@ -1,21 +1,21 @@
 .container {
-	display: flex;
-	flex-direction: column;
-	margin: 10px;
+    margin: auto;
+    text-align: center;
 }
 
 .name-input {
-	display: flex;
-	width: 30%;
+    margin: 1em;
+    width: 30% !important;
+    display: initial !important;
 }
 
 .join-global {
-	display: flex;
-	width: 5%;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 1px;
+    width: 25%;
 }
 
 .join-private {
-	display: flex;
-	width: 10%;
-	margin: 10px 10px 10px 0px;
+    width: 25%;
 }
