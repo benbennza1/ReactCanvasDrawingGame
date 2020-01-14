@@ -38,9 +38,16 @@
     height: 5%;
 } */
 
-.chat-history {
-    border: 1px blue solid;
-    height: 95%;
-    width: 60%;
-    position: absolute;
+/* .chat-history {
+  border: 1px blue solid;
+  max-height: 1px;
+  width: 60%;
+  scroll-behavior: auto;
+  overflow: scroll;
+  /* position: absolute;
+} */
+
+.chat {
+  overflow: auto;
+  height: 550px;
 }
